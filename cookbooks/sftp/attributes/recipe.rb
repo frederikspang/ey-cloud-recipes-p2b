@@ -1,0 +1,17 @@
+sftp  :users => ['navision','swedbank'],
+      :directories_navision => ['from_navision',
+                                'from_navision/archive',
+                                'from_pbs',
+                                'from_pbs/confirmed',
+                                'from_pbs/failed',
+                                'from_pbs/pbs_read_successfully',
+                                'from_pbs/rejected',
+                                'to_navision',
+                                'to_navision/archive',
+                                'to_pbs',
+                                'to_pbs/approved',
+                                'to_pbs/pending',
+                                'to_pbs/rejected',
+                                'to_pbs/sent'],
+      :directories_swedbank => ['upload']
+      

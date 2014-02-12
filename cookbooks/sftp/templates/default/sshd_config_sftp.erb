@@ -1,0 +1,16 @@
+Protocol 2
+StrictModes yes
+MaxStartups 10:30:60
+Ciphers aes256-cbc,aes256-ctr
+PasswordAuthentication yes
+ChallengeResponseAuthentication no
+Subsystem   sftp   internal-sftp
+UseDNS no
+UsePAM yes
+<% @users.each do |u| %>
+Match User <%= u %>
+    ChrootDirectory /home/jails/<%= u %>/
+    X11Forwarding no
+    AllowTcpForwarding no
+    ForceCommand internal-sftp
+<% end %>
