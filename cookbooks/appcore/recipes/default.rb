@@ -5,6 +5,7 @@
 
 require_recipe "appcore::cron"
 
+#DISABLE BY RBB
 #enable_package "app-text/pdftk-bin" do
 #  version "1.44"
 #end
