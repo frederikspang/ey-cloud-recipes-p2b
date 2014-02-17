@@ -1,3 +1,9 @@
+#P2B Custom recipes
+include_recipe "sftp"
+include_recipe "appcore"
+include_recipe "mimetype"
+include_recipe "emerge"
+
 #execute "testing" do
 #  command %Q{
 #    echo "i ran at #{Time.now}" >> /root/cheftime
@@ -149,9 +155,3 @@ include_recipe "env_vars"
   # postgresql9_pg_buffercache "postgres"
   # postgresql9_pg_freespacemap "postgres"
 #end
-
-#P2B Custom recipes
-include_recipe "sftp"
-include_recipe "appcore"
-include_recipe "mimetype"
-include_recipe "emerge"
