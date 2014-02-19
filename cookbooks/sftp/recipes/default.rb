@@ -5,6 +5,8 @@
 
 if ['solo', 'app_master', 'app'].include?(node[:instance_role])
 
+  group "sftp"
+
   directory "/data/sftp" do
     owner node[:owner_name]
     group node[:owner_name]
