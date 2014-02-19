@@ -1,5 +1,4 @@
 #P2B Custom recipes
-
 include_recipe "sftp"
 include_recipe "appcore"
 include_recipe "mimetype"
