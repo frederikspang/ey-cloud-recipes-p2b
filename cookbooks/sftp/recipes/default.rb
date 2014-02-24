@@ -5,19 +5,11 @@
 
 if ['solo', 'app_master', 'app'].include?(node[:instance_role])
 
-  groupadd 'sftp'
-
   directory "/data/sftp" do
     owner node[:owner_name]
     group node[:owner_name]
     mode "0755"
     action :create
-  end
-
-  directory "/data/sftp" do
-    owner 'deploy'
-    group 'jails'
-    mode "0755"
   end
 
   template "/etc/ssh/sshd_config" do
@@ -64,9 +56,14 @@ if ['solo', 'app_master', 'app'].include?(node[:instance_role])
     command "usermod -G #{node[:owner_name]},jails #{node[:owner_name]}"
   end
 
+  directory "/data/sftp" do
+    owner 'deploy'
+    group 'jails'
+    mode "0755"
+  end
+
   execute "restart-sshd" do
     command "/etc/init.d/sshd restart"
   end
-
 
 end
