@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 if ['solo', 'util'].include?(node[:instance_role])
-  if node[:name] == 'resque_scheduled' || node[:name] == 'resque_finalize'
+  if node[:name] == 'resque_scheduled' || node[:name] == 'resque_finalize' || node[:name] == 'resque_sftp'
     execute "install resque gem" do
       command "gem install resque redis redis-namespace yajl-ruby -r"
       not_if { "gem list | grep resque" }
