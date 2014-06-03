@@ -1,9 +1,3 @@
-#P2B Custom recipes
-include_recipe "sftp"
-include_recipe "appcore"
-include_recipe "mimetype"
-include_recipe "emerge"
-
 #execute "testing" do
 #  command %Q{
 #    echo "i ran at #{Time.now}" >> /root/cheftime
@@ -53,23 +47,23 @@ include_recipe "emerge"
 
 #uncomment to install specified packages
 # You must add your packages to packages/attributes/packages.rb
-#require_recipe "packages"
+require_recipe "packages"
 
 #uncomment to run the exim::auth recipe
 #include_recipe "exim::auth"
 #include_recipe "mongodb"
 
 #uncomment to run the resque recipe
-include_recipe "resque"
+#include_recipe "resque"
 
 #uncomment to run redis.yml recipe
-include_recipe "redis-yml"
+#include_recipe "redis-yml"
 
 #uncomment to run the resque-scheduler recipe
-include_recipe "resque-scheduler"
+#include_recipe "resque-scheduler"
 
 #uncomment to run the redis recipe
-include_recipe "redis"
+#include_recipe "redis"
 
 #uncomment to run the api-keys-yml recipe
 # include_recipe "api-keys-yml"
@@ -83,8 +77,7 @@ include_recipe "redis"
 
 #uncomment to set environment variables in passenger or unicorn
 # Set environment variables as specified in cookbooks/env_vars/attributes/env_vars.rb
-include_recipe "env_vars"
-
+#include_recipe "env_vars"
 
 #uncomment to include the mysql_replication_check recipe
 #include_recipe "mysql_replication_check"
