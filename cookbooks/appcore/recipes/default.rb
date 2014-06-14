@@ -5,18 +5,7 @@
 
 require_recipe "appcore::cron"
 
-#DISABLE BY RBB
-#enable_package "app-text/pdftk-bin" do
-#  version "1.44"
-#end
-#
-#package "app-text/pdftk-bin" do
-#  action :install
-#end
-#
-#remote_file "/usr/bin/pdftk" do
-#  owner "root"
-#  group "root"
-#  mode 0755
-#  source "pdftk"
-#end
+execute "ensure required directories" do
+  command "mkdir -p /data/#{app}/shared/locales"
+  command "mkdir -p /data/#{app}/shared/storage"
+end
