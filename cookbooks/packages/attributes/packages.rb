@@ -8,6 +8,6 @@
 
 default[:packages] = [
   {:name => "app-text/pdftk", :version => "1.41"},
-  {:name => "app-text/ghostscript-gpl", :version => "9.10-r2"},
-  {:name => "net-print/cups-pdf", :version => "2.6.1"}
+  {:name => "app-text/ghostscript-gpl", :version => "8.64"},
+  {:name => "net-print/cups-pdf", :version => "2.4.2"}
 ]
