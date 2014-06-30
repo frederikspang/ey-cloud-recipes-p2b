@@ -11,6 +11,8 @@ if ['solo', 'util'].include?(node[:instance_role])
 
     if node[:name] == 'resque_sftp'
       worker_count = 1
+    elsif node[:name] == 'resque_finalize'
+      worker_count = 3
     else
       case node[:ec2][:instance_type]
       when 'm1.small' then worker_count = 3
