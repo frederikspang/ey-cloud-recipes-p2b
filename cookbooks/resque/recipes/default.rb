@@ -11,13 +11,16 @@ if ['solo', 'util'].include?(node[:instance_role])
 
     if node[:name] == 'resque_sftp'
       worker_count = 1
-    else
+    elsif node[:name] == 'resque_finalize'
       case node[:ec2][:instance_type]
-      when 'm1.small' then worker_count = 3
-      when 'c1.medium'then worker_count = 3
-      when 'c1.xlarge' then worker_count = 8
-      else worker_count = 4
+      when 'm1.small'  then worker_count = 5
+      when 'm1.medium' then worker_count = 10
+      when 'm1.large'  then worker_count = 15
+      when 'm1.xlarge' then worker_count = 20
+      else worker_count = 5
       end
+    else # resque_scheduled
+      worker_count = 3
     end
 
     node[:applications].each do |app, data|
@@ -38,7 +41,7 @@ if ['solo', 'util'].include?(node[:instance_role])
           owner node[:owner_name]
           group node[:owner_name]
           mode 0644
-          source "#{node[:name]}_#{count}.conf.erb"
+          source "#{node[:name]}_#{node[:name] == 'resque_finalize' ? count%5 : count}.conf.erb"
         end
       end
 
