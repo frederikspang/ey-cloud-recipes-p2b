@@ -13,10 +13,10 @@ if ['solo', 'util'].include?(node[:instance_role])
       worker_count = 1
     elsif node[:name] == 'resque_finalize'
       case node[:ec2][:instance_type]
-      when 'm1.small'  then worker_count = 5
-      when 'm1.medium' then worker_count = 10
-      when 'm1.large'  then worker_count = 15
-      when 'm1.xlarge' then worker_count = 20
+      when 'm1.small', 'm3.small'  then worker_count = 5
+      when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 10
+      when 'm1.large', 'm3.large', 'c1.large', 'c3.large'  then worker_count = 15
+      when 'm1.xlarge', 'm3.xlarge', 'c1.xlarge', 'c3.xlarge' then worker_count = 20
       else worker_count = 5
       end
     else # resque_scheduled
