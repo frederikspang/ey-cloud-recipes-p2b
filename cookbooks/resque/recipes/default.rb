@@ -9,9 +9,9 @@ if ['solo', 'util'].include?(node[:instance_role])
       not_if { "gem list | grep resque" }
     end
 
-    if node[:name] == 'resque_sftp'
-      worker_count = 1
-    elsif node[:name] == 'resque_finalize'
+    if node[:name] == 'resque_scheduled'
+      worker_count = 3
+    else # resque_finalize || resque_sftp
       case node[:ec2][:instance_type]
       when 'm1.small', 'm3.small'  then worker_count = 5
       when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 10
@@ -19,8 +19,6 @@ if ['solo', 'util'].include?(node[:instance_role])
       when 'm1.xlarge', 'm3.xlarge', 'c1.xlarge', 'c3.xlarge' then worker_count = 20
       else worker_count = 5
       end
-    else # resque_scheduled
-      worker_count = 3
     end
 
     node[:applications].each do |app, data|
