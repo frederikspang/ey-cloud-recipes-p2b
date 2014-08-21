@@ -84,7 +84,7 @@ include_recipe "redis"
 #uncomment to set environment variables in passenger or unicorn
 # Set environment variables as specified in cookbooks/env_vars/attributes/env_vars.rb
 include_recipe "env_vars"
-
+include_recipe "unicorn"
 
 #uncomment to include the mysql_replication_check recipe
 #include_recipe "mysql_replication_check"

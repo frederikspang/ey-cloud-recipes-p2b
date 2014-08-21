@@ -5,17 +5,6 @@ service "unicorn_#{appname}" do
   supports :restart => true
 end
 
-template "/data/#{appname}/shared/config/env.custom" do
-  source "env.custom.erb"
-  owner node[:owner_name]
-  group node[:owner_name]
-  mode 0644
-  backup 0
-  variables({
-    :appname => appname
-  })
-end
-
 case node[:ec2][:instance_type]
 when 'm1.small', 'm3.small'  then worker_count = 5
 when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 10
