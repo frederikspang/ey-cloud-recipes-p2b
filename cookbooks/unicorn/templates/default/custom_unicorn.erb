@@ -1,6 +1,3 @@
-Loading application data from Engine Yard Cloud...
-
-Connecting to app_master ec2-54-247-80-224.eu-west-1.compute.amazonaws.com...
 # Set variables for usage in the before_exec block to help ensure deploys are succesful.
 current_path = '/data/appcore/current'
 shared_path = '/data/appcore/shared'
@@ -13,7 +10,7 @@ working_directory '/data/appcore/current/'
 # or SIGTTOU respectively to the master process without reloading
 # the rest of your Unicorn configuration.  See the SIGNALS document
 # for more information.
-worker_processes @worker_count
+worker_processes <%= @worker_count %>
 
 # Adds an +address+ to the existing listener set.  May be specified more
 # than once.  +address+ may be an Integer port number for a TCP port, an
