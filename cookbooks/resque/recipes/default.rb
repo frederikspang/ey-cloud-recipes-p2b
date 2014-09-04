@@ -3,15 +3,18 @@
 # Recipe:: default
 #
 if ['solo', 'util'].include?(node[:instance_role])
-  if node[:name] == 'resque_scheduled' || node[:name] == 'resque_finalize' || node[:name] == 'resque_sftp'
+  if node[:name] == 'generic_utility' || node[:name] == 'resque_finalize'
     execute "install resque gem" do
       command "gem install resque redis redis-namespace yajl-ruby -r"
       not_if { "gem list | grep resque" }
     end
 
-    if node[:name] == 'resque_scheduled'
-      worker_count = 3
-    else # resque_finalize || resque_sftp
+    if node[:name] == 'generic_utility'
+      case node[:ec2][:instance_type]
+      when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 13
+      when 'm1.large', 'm3.large', 'c1.large', 'c3.large'  then worker_count = 18
+      else worker_count = 5
+    elsif node[:name] == 'resque_finalize'
       case node[:ec2][:instance_type]
       when 'm1.small', 'm3.small'  then worker_count = 5
       when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 10
@@ -19,6 +22,8 @@ if ['solo', 'util'].include?(node[:instance_role])
       when 'm1.xlarge', 'm3.xlarge', 'c1.xlarge', 'c3.xlarge' then worker_count = 20
       else worker_count = 5
       end
+    else
+      worker_count = 0
     end
 
     node[:applications].each do |app, data|

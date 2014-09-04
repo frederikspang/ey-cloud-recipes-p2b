@@ -1,5 +1,5 @@
 if ['app_master', 'app', 'util'].include?(node[:instance_role])
-  redis_instance = node['utility_instances'].find { |instance| instance['name'] == 'redis' }
+  redis_instance = node['utility_instances'].find { |instance| instance['name'] == 'generic_utility' }
 
   if redis_instance
     node[:applications].each do |app, data|
