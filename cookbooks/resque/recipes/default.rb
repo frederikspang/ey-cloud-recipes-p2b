@@ -14,6 +14,7 @@ if ['solo', 'util'].include?(node[:instance_role])
       when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 13
       when 'm1.large', 'm3.large', 'c1.large', 'c3.large'  then worker_count = 18
       else worker_count = 5
+      end
     elsif node[:name] == 'resque_finalize'
       case node[:ec2][:instance_type]
       when 'm1.small', 'm3.small'  then worker_count = 5
