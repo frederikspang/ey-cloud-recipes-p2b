@@ -4,7 +4,7 @@
 #
 
 if ['solo', 'util'].include?(node[:instance_role])
-  if node[:name] == 'resque_sftp'
+  if node[:name] == 'generic_utility'
     directory "/data/sftp" do
       owner node[:owner_name]
       group node[:owner_name]
