@@ -45,4 +45,7 @@ if [ $shellcheck == "0" ];then
    echo "/bin/false" >> /etc/shells
 fi
 
+
+#/etc/ssh/sshd_config
+
 exit 0
