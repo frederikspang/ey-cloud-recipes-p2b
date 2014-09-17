@@ -18,7 +18,7 @@ usercheck=`grep -c "$user:" /etc/passwd`
 if [ $usercheck != "0" ];then
    exit 1
 fi
-useradd -g jails -s /bin/false $user
+useradd -d $base_dir -g jails -s /bin/false $user
 # create user's home directory and writeable_dir directory
 mkdir -p $base_dir/$user
 # make root owner of user's home
