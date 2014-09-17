@@ -9,7 +9,7 @@ UseDNS no
 UsePAM yes
 <% @users.each do |u| %>
 Match User <%= u %>
-    ChrootDirectory /home/jails/<%= u %>/
+    ChrootDirectory /home/jails/<%= u %>/public
     X11Forwarding no
     AllowTcpForwarding no
     ForceCommand internal-sftp
