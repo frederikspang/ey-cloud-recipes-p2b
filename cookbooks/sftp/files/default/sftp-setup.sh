@@ -32,7 +32,7 @@ usermod -d public $user
 # change owner of writeable_dir dir to user
 chown $user:jails $base_dir/$user/$writeable_dir
 # ensure the correct write permissions for user
-chmod 0775 $base_dir/$user/$writeable_dir
+chmod 0755 $base_dir/$user/$writeable_dir
 # check to make sure /bin/false in /etc/shells
 shellcheck=`grep -c "/bin/false" /etc/shells`
 
