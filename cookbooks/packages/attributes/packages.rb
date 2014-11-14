@@ -9,5 +9,6 @@
 default[:packages] = [
   {:name => "app-text/pdftk", :version => "1.41"},
   {:name => "app-text/ghostscript-gpl", :version => "8.64-r2"},
-  {:name => "net-print/cups-pdf", :version => "2.4.2"}
+  {:name => "net-print/cups-pdf", :version => "2.4.2"},
+  {:name => "app-misc/wkhtmltopdf-bin", :version => "0.12.1"}
 ]
