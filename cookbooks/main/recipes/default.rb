@@ -37,6 +37,9 @@ include_recipe "emerge"
 #uncomment to run the eybackup_slave recipe
 # include_recipe "eybackup_slave"
 
+# Recipe for activating Logentries integration
+include_recipe "le"
+
 #uncomment to run the ssmtp recipe
 #include_recipe "ssmtp"
 
