@@ -1,10 +1,6 @@
 if ['solo', 'app_master', 'app'].include?(node[:instance_role])
   appname = "appcore"
 
-  service "unicorn_#{appname}" do
-    supports :restart => true
-  end
-
   case node[:ec2][:instance_type]
   when 'm1.small', 'm3.small'  then worker_count = 5
   when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 10
@@ -22,6 +18,11 @@ if ['solo', 'app_master', 'app'].include?(node[:instance_role])
     variables({
       :worker_count => worker_count
     })
-    notifies :restart, resources(:service => "unicorn_#{appname}")
   end
+
+  execute "restart unicorn" do
+    command "monit restart unicorn_master_appcore"
+    user "root"
+  end
+
 end
