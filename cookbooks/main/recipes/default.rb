@@ -35,7 +35,7 @@ include_recipe "emerge"
 #include_recipe "authorized_keys"
 
 #uncomment to run the eybackup_slave recipe
-# include_recipe "eybackup_slave"
+include_recipe "eybackup_slave"
 
 # Recipe for activating Logentries integration
 if node[:environment][:framework_env] == "production"
