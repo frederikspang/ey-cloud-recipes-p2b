@@ -10,5 +10,6 @@ default[:redis] = {
   :timeout => 300000,
   :saveperiod => ["900 1", "300 10", "60 10000"],
   :databases => 16,
-  :rdbcompression => "yes"
+  :rdbcompression => "yes",
+  :appendonly => "yes"
 }
