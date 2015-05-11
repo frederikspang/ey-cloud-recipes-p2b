@@ -7,6 +7,5 @@
 # Examples below:
 
 default[:packages] = [
-  {:name => "media-gfx/wkhtmltopdf-bin", :version => "0.12.2.1"},
-  {:name => "x11-libs/qt-webkit", :version => "4.8.2"}
+  {:name => "media-gfx/wkhtmltopdf-bin", :version => "0.12.2.1"}
 ]
