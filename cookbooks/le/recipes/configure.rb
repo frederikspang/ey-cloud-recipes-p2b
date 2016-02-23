@@ -9,13 +9,8 @@ execute "le register --account-key" do
   not_if { File.exists?('/etc/le/config') }
 end
 
-follow_paths = [
-  "/var/log/syslog",
-  "/var/log/auth.log",
-  "/var/log/daemon.log"
-]
+follow_paths = []
 (node[:applications] || []).each do |app_name, app_info|
-  follow_paths << "/var/log/nginx/#{app_name}.access.log"
   follow_paths << "/data/#{app_name}/shared/log/production.log"
 end
 
