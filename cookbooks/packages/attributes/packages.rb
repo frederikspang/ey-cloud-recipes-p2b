@@ -9,5 +9,6 @@
 default[:packages] = [
   {:name => "media-gfx/wkhtmltopdf-bin", :version => "0.12.2.1"},
   {:name => "media-fonts/corefonts", :version => "1-r4"},
+  {:name => "media-fonts/roboto", :version => "20111129"},
   {:name => "dev-libs/openssl", :version => "1.0.1p"}
 ]
