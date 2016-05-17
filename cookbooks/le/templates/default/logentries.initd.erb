@@ -5,19 +5,19 @@ PIDFILE="/var/run/$SERVICENAME.pid"
 EXEC="/usr/bin/le-monitordaemon"
 
 depend() {
-	need net
-	need localmount
-	after bootmisc
+  need net
+  need localmount
+  after bootmisc
 }
 
 start() {
-	ebegin "Starting Logentries Agent"
-	start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --exec $EXEC
-	eend $? 
+  ebegin "Starting Logentries Agent"
+  start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --exec $EXEC
+  eend $?
 }
 
 stop() {
-	ebegin "Stopping Logentries Agent"
-	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
-	eend $?
+  ebegin "Stopping Logentries Agent"
+  start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+  eend $?
 }
