@@ -11,8 +11,8 @@ if ['solo', 'util'].include?(node[:instance_role])
 
     if node[:name] == 'generic_utility'
       case node[:ec2][:instance_type]
-      when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 13
-      when 'm1.large', 'm3.large', 'c1.large', 'c3.large'  then worker_count = 18
+      when 'm1.medium', 'm3.medium', 'c1.medium' then worker_count = 8
+      when 'm1.large', 'm3.large', 'c1.large', 'c3.large'  then worker_count = 13
       else worker_count = 5
       end
     elsif node[:name] == 'resque_finalize'
