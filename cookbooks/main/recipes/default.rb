@@ -39,7 +39,9 @@ include_recipe "eybackup_slave"
 
 # Recipe for activating Logentries integration
 if node[:environment][:framework_env] == "production"
-  include_recipe "le"
+  unless node[:name] == 'resque_finalize'
+    include_recipe "le"
+  end
 end
 
 #uncomment to run the ssmtp recipe
