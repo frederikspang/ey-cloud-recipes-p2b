@@ -1,0 +1,23 @@
+<%= @determine_adapter_code %>
+<%= @environment %>:
+  adapter:   <%= @dbtype %>
+  database:  '<%= @dbname %>'
+  username:  '<%= @dbuser %>'
+  password:  '<%= @dbpass %>'
+  host:      '<%= @dbhost %>'
+  strict:    false
+  reconnect: true
+<%= @pool ? "  pool:      #@pool" : '' %>
+
+<% @slaves.each_with_index do |slave,i| %>
+<%= i == 0 ? "slave" : "slave_#{i}" %>:
+  slavename: <%= slave["name"].nil? ? "---" : "'"+slave["name"]+"'" %>
+  adapter:   <%= @dbtype %>
+  database:  '<%= @dbname %>'
+  username:  '<%= @dbuser %>'
+  password:  '<%= @dbpass %>'
+  host:      '<%= slave['private_hostname'] %>'
+  strict:    false
+  reconnect: true
+<%= @pool ? "  pool:      #@pool" : '' %>
+<% end %>

@@ -3,6 +3,7 @@ include_recipe "sftp"
 include_recipe "appcore"
 include_recipe "mimetype"
 include_recipe "emerge"
+include_recipe "database_yml_custom"
 
 #execute "testing" do
 #  command %Q{
@@ -38,11 +39,11 @@ include_recipe "emerge"
 include_recipe "eybackup_slave"
 
 # Recipe for activating Logentries integration
-if node[:environment][:framework_env] == "production"
-  unless node[:name] == 'resque_finalize'
-    include_recipe "le"
-  end
-end
+# if node[:environment][:framework_env] == "production"
+#   unless node[:name] == 'resque_finalize'
+#     include_recipe "le"
+#   end
+# end
 
 #uncomment to run the ssmtp recipe
 #include_recipe "ssmtp"
