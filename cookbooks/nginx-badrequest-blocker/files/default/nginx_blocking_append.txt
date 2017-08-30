@@ -1,0 +1,16 @@
+#---BOT-REQUEST_BLOCKING-START
+# By default the config below will only block bad bots
+# Uncomment the other "if's" to block referers and/or snoopers
+
+location ~ \.php$ { 
+    return 404; 
+}
+
+location /wp-admin { 
+    return 404; 
+} 
+
+if ($request_method !~ ^(GET|HEAD|PUT|PATCH|POST|DELETE|OPTIONS)$ ){ 
+    return 405; 
+}
+#---BOT-REQUEST_BLOCKING-END

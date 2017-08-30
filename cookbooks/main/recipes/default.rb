@@ -4,6 +4,7 @@ include_recipe "appcore"
 include_recipe "mimetype"
 include_recipe "emerge"
 include_recipe "database_yml_custom"
+include_recipe "nginx-badrequest-blocker"
 
 #execute "testing" do
 #  command %Q{
@@ -103,6 +104,7 @@ include_recipe "unicorn"
 
 #uncomment to include the Elasticsearch recipe
 #include_recipe "elasticsearch"
+
 
 # To install specific plugins to Elasticsearch see below as an example
 #es_plugin "cloud-aws" do
